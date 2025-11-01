@@ -1,0 +1,16 @@
+# AWS Configuration
+aws_region = "ap-northeast-1"
+
+# Kinesis Video Stream Configuration
+stream_name           = "dockerStream"
+data_retention_hours  = 168  # 7 days
+
+# Environment
+environment = "dev"
+
+# Domain Configuration
+domain_name      = "your-domain.com"
+route53_zone_id  = "Z1234567890ABC"
+
+# Project Configuration
+project_name = "shiitake-monitoring"
