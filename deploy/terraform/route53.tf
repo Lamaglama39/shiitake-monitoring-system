@@ -55,7 +55,3 @@ resource "aws_acm_certificate_validation" "frontend" {
   validation_record_fqdns = [for record in aws_route53_record.cert_validation : record.fqdn]
 }
 
-output "frontend_url" {
-  description = "URL of the frontend application"
-  value       = "https://${var.domain_name}"
-}

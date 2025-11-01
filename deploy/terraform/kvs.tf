@@ -109,18 +109,3 @@ resource "aws_iam_access_key" "kinesis_video_access_key" {
 # Data source for current AWS account
 data "aws_caller_identity" "current" {}
 
-output "kinesis_video_stream_name" {
-  description = "Name of the Kinesis Video Stream"
-  value       = aws_kinesis_video_stream.mac_camera_stream.name
-}
-
-output "access_key_id" {
-  description = "Access Key ID for the IAM user"
-  value       = aws_iam_access_key.kinesis_video_access_key.id
-}
-
-output "secret_access_key" {
-  description = "Secret Access Key for the IAM user"
-  value       = aws_iam_access_key.kinesis_video_access_key.secret
-  sensitive   = true
-}

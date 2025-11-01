@@ -108,7 +108,3 @@ resource "aws_cloudfront_distribution" "frontend" {
   depends_on = [aws_acm_certificate_validation.frontend]
 }
 
-output "cloudfront_domain_name" {
-  description = "Domain name of the CloudFront distribution"
-  value       = aws_cloudfront_distribution.frontend.domain_name
-}
