@@ -1,0 +1,26 @@
+# Git
+.git
+.gitignore
+
+# Environment files
+.env
+.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+test/
+
+# Documentation
+README.md
+cmd-memo.md
+
+# Logs
+*.log
+
+# Model files
+*.pt
+*.onnx

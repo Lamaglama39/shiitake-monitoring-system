@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  kvs-receiver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: shiitake-monitoring-kvs:latest
+    container_name: shiitake-kvs-receiver
+    network_mode: host
+    environment:
+      # AWS Credentials (required)
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-ap-northeast-1}
+
+      # KVS Configuration
+      - STREAM_NAME=${STREAM_NAME:-dockerStream}
+      - TCP_HOST=${TCP_HOST:-}
+      - TCP_PORT=${TCP_PORT:-5000}
+
+    volumes:
+      - ./:/workspace
+
+    stdin_open: true
+    tty: true
+
+    restart: unless-stopped
