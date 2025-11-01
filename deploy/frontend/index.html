@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>しいたけモニタリングシステム</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- HLS.js for HLS video playback -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🍄 しいたけモニタリングシステム</h1>
+            <p class="subtitle">Shiitake Growth Monitoring System</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Live Stream Section -->
+            <section class="section live-section">
+                <div class="section-header">
+                    <h2>📹 ライブストリーム</h2>
+                    <span class="status-badge" id="stream-status">オフライン</span>
+                </div>
+
+                <!-- Video Player -->
+                <div class="video-container">
+                    <video id="live-stream-video" class="video-stream" playsinline controls muted style="display: none;">
+                        お使いのブラウザはビデオタグをサポートしていません。
+                    </video>
+                    <div id="stream-placeholder" class="video-placeholder">
+                        <div class="placeholder-content">
+                            <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M23 7l-7 5 7 5V7z"/>
+                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                            </svg>
+                            <p id="stream-message">ストリーム準備中...</p>
+                            <p class="small-text">カメラからの映像配信を待っています</p>
+                            <button id="start-stream-btn" class="btn btn-primary" style="margin-top: 20px;">ライブストリーム開始</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stream Controls -->
+                <div class="stream-controls">
+                    <div class="control-group">
+                        <label class="control-label">
+                            <input type="radio" name="stream-mode" value="live" checked>
+                            ライブ
+                        </label>
+                        <label class="control-label">
+                            <input type="radio" name="stream-mode" value="time-range">
+                            時間指定
+                        </label>
+                    </div>
+
+                    <!-- Time Range Controls (hidden by default) -->
+                    <div id="time-range-controls" class="time-range-controls" style="display: none;">
+                        <div class="time-input-group">
+                            <label for="start-time">開始時刻:</label>
+                            <input type="datetime-local" id="start-time" class="time-input">
+                        </div>
+                        <div class="time-input-group">
+                            <label for="end-time">終了時刻:</label>
+                            <input type="datetime-local" id="end-time" class="time-input">
+                        </div>
+                        <button id="apply-time-range" class="btn btn-secondary">適用</button>
+                    </div>
+                </div>
+
+                <!-- Stream Info -->
+                <div class="stream-info">
+                    <div class="info-item">
+                        <span class="label">モード:</span>
+                        <span class="value" id="stream-mode-display">ライブ</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">解像度:</span>
+                        <span class="value" id="stream-resolution">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">フラグメント:</span>
+                        <span class="value" id="fragment-duration">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">接続時刻:</span>
+                        <span class="value" id="connection-time">-</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Section -->
+            <section class="section info-section">
+                <div class="section-header">
+                    <h2>ℹ️ 使い方</h2>
+                </div>
+                <div class="info-content">
+                    <div class="info-card">
+                        <h3>🎥 ライブストリーム</h3>
+                        <p>リアルタイムで監視カメラの映像を視聴できます。</p>
+                        <ul>
+                            <li>「ライブストリーム開始」ボタンをクリック</li>
+                            <li>5-15秒程度の遅延があります</li>
+                            <li>YOLO検出結果が含まれます</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>⏱️ 時間指定再生</h3>
+                        <p>過去の特定時間帯の映像を再生できます。</p>
+                        <ul>
+                            <li>「時間指定」を選択</li>
+                            <li>開始・終了時刻を指定</li>
+                            <li>「適用」ボタンで再生開始</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 しいたけモニタリングシステム | Powered by AWS KVS & YOLO</p>
+        </footer>
+    </div>
+
+    <script src="js/kvs-player.js"></script>
+    <script src="js/kvs-integration-simple.js"></script>
+</body>
+</html>
