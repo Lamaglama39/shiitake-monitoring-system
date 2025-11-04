@@ -4,7 +4,19 @@ YOLOv12(カスタムモデル)を使用した、シイタケの成長をモニ�
 
 ローカル環境のカメラで撮影した映像をリアルタイムで物体検出処理し、AWS Kinesis Video Streamsを通じてクラウドに配信します。
 
+### システム構成図
+
 ![architecture.png](./image/architecture.png)
+
+### モニタリング イメージ
+
+#### 1.KVS マネジメントコンソール上のメディア再生
+
+![monitoring-image-kvs.png](./image/monitoring-image-kvs.png)
+
+#### 2.Webサイト
+
+![monitoring-image-web.png](./image/monitoring-image-web.png)
 
 ### 主な機能
 
